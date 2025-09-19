@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>todo</title>
+</head>
+<body>
+  <!-- Page heading -->
+  <h1>To-Do List</h1>
+
+  <!-- Button for back to dashboard -->
+  <button onclick="window.location.href='https://github.com/elervag/website.github.io/edit/main/index.html';">Back to Dashboard</button>
+
+  <!-- Textarea for writing notes -->
+  <textarea id="notes" rows="10" cols="50" placeholder="What needs to be done..."></textarea>
+
+  <script>
+    // Get reference to the textarea element by its ID
+    const notesField = document.getElementById('notes');
+
+    // When the page finishes loading
+    window.onload = function() {
+      // Retrieve saved notes from localStorage (if any)
+      const savedNotes = localStorage.getItem('myNotes');
+
+      // If there are saved notes, populate the textarea with them
+      if (savedNotes) {
+        notesField.value = savedNotes;
+      }
+    };
+
+    // Listen for any input changes in the textarea
+    notesField.addEventListener('input', function() {
+      // Save the current content of the textarea to localStorage
+      localStorage.setItem('myNotes', notesField.value);
+    });
+  </script>
+</body>
+</html>
