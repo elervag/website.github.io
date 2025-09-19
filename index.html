@@ -3,15 +3,59 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>MyDeloitte Dashboard</title>
 </head>
 <body>
    <!-- Your web page content goes here -->
-   <h1>This is a test page</h1>
-   <button onclick="window.location.href='https://elervag.github.io/website.github.io/second_page';">Go to Next Page</button>
-</body>
+    <button onclick="window.location.href='https://iaccess:9150/workspace/weeklytimesheets';">Maconomy</button>
+    <button onclick="window.location.href='https://trailhead.salesforce.com/users/strailhead/trailmixes/prepare-for-your-salesforce-administrator-credential';">Salesforce</button>
+    <button onclick="window.location.href='https://nsepaird.deloitte.com/chat/68cd4e8f0332471fcff735bf';">PairD</button>
+    <button onclick="window.location.href='https://staffit.deloitteresources.com/WebUI/UserValidation/#/dashboard';">STAFFIT</button>
+    <button onclick="window.location.href='https://outlook.office365.com/mail/';">Outlook</button>
+    <button onclick="window.location.href='todo.html';">To-Do</button>
 
+
+    <!-- Adding a search bar that lets you Google directly  -->
+    <form action="https://www.google.com/search" method="GET" target="_blank">
+        <input type="search" id="gsearch" name="q" placeholder="Google from Dashboard..">
+        <button type="submit">Search</button>
+    </form>
+
+
+    <!-- Slider for dark/light mode-->
+    <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+        <span class="label-text">Dark/Light mode</span>
+    </label>
+
+
+    <!-- Paragraphs to display date and time -->
+    <p>Date: <span id="date"></span></p>
+    <p><span id="time"></span></p>
+
+    <script>
+    // Function to update date and time on the page
+    function updateDateTime() {
+        var now = new Date();
+        // Get the date string in local format
+        var date = now.toLocaleDateString();
+        // Get hours and minutes only, formatted with leading zeros if needed
+        var hours = now.getHours().toString().padStart(2, '0');
+        var minutes = now.getMinutes().toString().padStart(2, '0');
+        var time = hours + ':' + minutes;
+        // Update the content of the date and time spans
+        document.getElementById('date').textContent = date;
+        document.getElementById('time').textContent = time;
+    }
+    // Call updateDateTime once immediately to show current time without delay
+    updateDateTime();
+    // Set interval to update the time every 60,000 milliseconds (1 minute)
+    setInterval(updateDateTime, 60000);
+    </script>
+</body>
 </html>
+
 
 
 
