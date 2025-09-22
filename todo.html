@@ -4,32 +4,44 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>todo</title>
+   <link rel="icon" type="image/x-icon" href="logo.png">
+   <link rel="stylesheet" href="todo.css">
 </head>
 <body>
   <!-- Page heading -->
   <h1>To-Do List</h1>
 
   <!-- Button for back to dashboard -->
-  <button onclick="window.location.href='https://elervag.github.io/website.github.io/';">Back to Dashboard</button>
+  <button onclick="window.location.href='index.html';" class="back">Back to Dashboard</button>
 
   <!-- Textarea for writing notes -->
-  <textarea id="notes" rows="10" cols="50" placeholder="What needs to be done..."></textarea>
+  <textarea id="notes" rows="35" cols="162" placeholder="What needs to be done..."></textarea>
+
+  <script>
+    // On page load, read the saved mode from localStorage
+    const savedMode = localStorage.getItem('mode');
+    // Apply the saved mode or default to light if none saved
+    if (savedMode === 'dark') {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+  </script>
 
   <script>
     // Get reference to the textarea element by its ID
     const notesField = document.getElementById('notes');
-
     // When the page finishes loading
     window.onload = function() {
       // Retrieve saved notes from localStorage (if any)
       const savedNotes = localStorage.getItem('myNotes');
-
       // If there are saved notes, populate the textarea with them
       if (savedNotes) {
         notesField.value = savedNotes;
       }
     };
-
     // Listen for any input changes in the textarea
     notesField.addEventListener('input', function() {
       // Save the current content of the textarea to localStorage
